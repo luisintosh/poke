@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="{{lang}}">
 	<head>
-		<title>Pokémon Go Map</title>
+		<title>PokeMap - Pokémon Go Map</title>
+		<meta name="description" content="New Pokémon Go map can show the exact location of every pokémon around you!">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,23 +12,23 @@
 
 		<!-- Fav- & Apple-Touch-Icons -->
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="static/appicons/favicon.ico" type="image/x-icon">
-		<!-- non-retina iPhone pre iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/114x114.png" sizes="57x57">
-		<!-- non-retina iPad pre iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/144x144.png" sizes="72x72">
-		<!-- non-retina iPad iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/152x152.png" sizes="76x76">
-		<!-- retina iPhone pre iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/114x114.png" sizes="114x114">
-		<!-- retina iPhone iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/120x120.png" sizes="120x120">
-		<!-- retina iPad pre iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/144x144.png" sizes="144x144">
-		<!-- retina iPad iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/152x152.png" sizes="152x152">
-		<!-- retina iPhone 6 iOS 7 -->
-		<link rel="apple-touch-icon" href="static/appicons/180x180.png" sizes="180x180">
+		<link rel="apple-touch-icon" sizes="57x57" href="static/appicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="static/appicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="static/appicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="static/appicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="static/appicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="static/appicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="static/appicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="static/appicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="static/appicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="static/appicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="static/appicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="static/appicons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="static/appicons/favicon-16x16.png">
+		<link rel="manifest" href="static/appicons/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="static/appicons/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 
 		<link rel="stylesheet" href="static/dist/css/app.min.css" />
 		<script src="static/js/vendor/modernizr.custom.js"></script>
@@ -37,8 +38,12 @@
 	<div class="wrapper">
 		<!-- Header -->
 		<header id="header">
-			<a href="#nav">Options</a>
-			<h1><a href="#">Pokémon Go Map</a></h1>
+			<h1>
+				<span>Pokémon Go Map</span>
+				<a href="./"><img src="static/images/pokemap_logo.png"></a>
+			</h1>
+			<img src="static/images/loader.gif" id="loading-top">
+			<a href="#nav" id="to-nav">Menu</a>
 		</header>
 
 		<!-- Nav -->
@@ -112,18 +117,33 @@
 					</label>
 				</div>
 			</div>
+			<div class="form-control">
+				<label for="notify-pokemon">
+					<h3>Follow me!</h3>
+					<a href="https://twitter.com/luisintosh" class="twitter-follow-button" data-show-count="false">Follow @luisintosh</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</label>
+			</div>
+			<div class="form-control">
+				<label for="notify-pokemon">
+					<h3>Info PokeMap</h3>
+					<small>
+						<p>
+							A large portion of the enjoyment of Pokémon Go is finding new creatures. Be that as it may, a bug has made that truly troublesome in the course of recent days, with the diversion's Nearby component apparently separating. Luckily, we think of an answer one that some may call bamboozling, additionally makes discovering pokémon madly simple: it's a Google Map that shows the area of each pokémon around you!
+						</p> 
+						<p>
+							The project emerged from a subreddit committed to engineers playing with Pokémon Go. In there, somebody made sense of how to haul crude information out of the amusement, including the areas of rec centers, the things at individual pokéstops, and where pokémon are showing up.
+						</p>
+					</small>
+				</label>
+			</div>
 			<!-- <button id="trigger-overlay">Test overlay</button> -->
 		</nav>
 
 		<div id="map"></div>
 
-		<div class="overlay overlay-contentscale">
-			<button type="button" class="overlay-close">Close</button>
-			<nav>
-				<ul>
-					<li><a href="#">Login Details Here</a></li>
-				</ul>
-			</nav>
+		<div class="footer-container">
+			<img src="static/images/pokeball.png" id="pokegps" class="current-location">
+			<div id="hihi" style="display:none"></div>
 		</div>
 	</div>
 

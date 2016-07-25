@@ -580,3 +580,26 @@ function sendNotification(title, text, icon) {
         };
     }
 }
+
+document.getElementById("pokegps").addEventListener("click", function() {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+        $.post("next_loc?lat=" + pos.lat + "&lon=" + pos.lng, {}).done(function (data) {
+            $("#next-location").val("");
+            map.setCenter(pos);
+            marker.setPosition(pos);
+        });
+    }, function() {
+        alert("We can't get your current location");
+    });
+    } else {
+        // Browser doesn't support Geolocation
+        alert("Your device don't support Geolocation");
+    }
+});

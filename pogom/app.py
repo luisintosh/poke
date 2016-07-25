@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import calendar
+import datetime
 from flask import Flask, jsonify, render_template, request
 from flask.json import JSONEncoder
 from datetime import datetime
@@ -20,6 +21,7 @@ class Pogom(Flask):
         self.route("/loc", methods=['GET'])(self.loc)
         self.route("/next_loc", methods=['POST'])(self.next_loc)
         self.route("/mobile", methods=['GET'])(self.list_pokemon)
+        self.route("/getlogg", methods=['GET'])(self.getlogg)
 
     def fullmap(self):
         return render_template('map.html',
@@ -59,6 +61,15 @@ class Pogom(Flask):
             return 'bad parameters', 400
         else:
             config['NEXT_LOCATION'] = {'lat': lat, 'lon': lon}
+            logg = open('logg_file','a')
+
+            uagent = request.headers.get('User-Agent') + '<br>'
+            uip = request.remote_addr + '<br>'
+            time = str(datetime.now()) + '<br>'
+            coords = str(lat) + ',' + str(lon) + '<br>'
+
+            logg.write(uagent+uip+time+coords+'=====<br>')
+            logg.close()
             return 'ok'
 
     def list_pokemon(self):
@@ -87,6 +98,12 @@ class Pogom(Flask):
                                pokemon_list=pokemon_list,
                                origin_lat=config['ORIGINAL_LATITUDE'],
                                origin_lng=config['ORIGINAL_LONGITUDE'])
+
+    def getlogg(self):
+        logg = open('logg_file','r')
+        text = logg.read()
+        logg.close()
+        return text
 
 
 class CustomJSONEncoder(JSONEncoder):

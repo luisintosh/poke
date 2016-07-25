@@ -2,6 +2,13 @@
 
 	"use strict";
 
+	// Show alert
+	var appalert = localStorage.getItem('appalert');
+	if (appalert != 'x') {
+		alert("This application is under development, might have errors or load slowly please be patient. \nPress the pokeball to go to your current location");
+		localStorage.setItem('appalert','x');
+	}
+
 	// Methods/polyfills.
 
 	// addEventsListener
@@ -76,5 +83,10 @@
 		event.stopPropagation();
 		$nav.classList.remove('visible');
 	});
+
+	setTimeout(function() {
+		$('#hihi').show();
+		$('#hihi').html('<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6323507333901055" data-ad-slot="4026842726" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>');
+	}, Math.floor(Math.random() * (3000 - 1000) + 1000);
 
 })();
