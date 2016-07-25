@@ -8,6 +8,3 @@ config/credentials.json
 static/dist/
 node_modules/
 venv/
-
-Dockerfile
-package.json
