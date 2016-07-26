@@ -60,7 +60,7 @@ def get_args():
     parser.set_defaults(DEBUG=False)
     args = parser.parse_args()
 
-    if (args.settings):
+    if (True):
         args = parse_config(args) 
     else:
         if (args.username is None or args.location is None or args.step_limit is None):
