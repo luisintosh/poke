@@ -1,1 +1,1 @@
-web: python runserver.py -a "$AUTH_SERVICE" -u "$USERNAME" -p "$PASSWORD" -P 80 -l "40.758899,-73.9873197" -st 12
+web: python runserver.py -a "$AUTH_SERVICE" -u "$USERNAME" -p "$PASSWORD" -P 80 -l "Times Square, Manhattan, New York" -st 12
