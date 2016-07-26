@@ -1,1 +1,1 @@
-web: python runserver.py -a "$AUTH_SERVICE" -u "$USERNAME" -p "$PASSWORD" -P 80 -l "TimesSquare,Manhattan,NewYork" -st 12
+web: python runserver.py -a "$AUTH_SERVICE" -u "$USERNAME" -p "$PASSWORD" -l "TimesSquare,Manhattan,NewYork" -st 12
